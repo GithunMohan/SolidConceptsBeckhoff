@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1">
-  <POU Name="PLC_PRG" Id="{534f6ce9-3e97-41da-ab91-116f7415a188}" SpecialFunc="None">
-    <Declaration><![CDATA[PROGRAM PLC_PRG
+  <POU Name="ObserverPatternTest" Id="{534f6ce9-3e97-41da-ab91-116f7415a188}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM ObserverPatternTest
 VAR
 	machine: VisitorHandler;
 	AlarmLogger1: AlarmLogger;

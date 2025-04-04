@@ -24,7 +24,7 @@ END_VAR
 
 checkSubscriber:= TRUE;
 FOR index:=1 TO Gl1.NUMOFSUBSCRIBERS BY 1 DO
-	IF THIS^._subscribers[Gl1.NUMOFSUBSCRIBERS]=subscriber 	THEN
+	IF THIS^._subscribers[index]=subscriber 	THEN
 		RETURN;
 	END_IF
 END_FOR 

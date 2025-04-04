@@ -5,7 +5,10 @@
     <CycleTime>20000</CycleTime>
     <Priority>1</Priority>
     <PouCall>
-      <Name>PLC_PRG</Name>
+      <Name>ObserverPatternTest</Name>
+    </PouCall>
+    <PouCall>
+      <Name>StatePatternTest</Name>
     </PouCall>
     <TaskFBGuid>{41ee62c8-47dd-4471-ac74-0515148db9c8}</TaskFBGuid>
     <Fb_init>{cf5a4a56-80b5-4ab0-8fc2-220456bc6998}</Fb_init>

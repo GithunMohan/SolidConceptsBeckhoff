@@ -16,7 +16,7 @@ END_VAR
       <Get Name="Get" Id="{557ee3ca-cfc2-47a6-accc-45ec5e733b08}">
         <Declaration><![CDATA[]]></Declaration>
         <Implementation>
-          <ST><![CDATA[]]></ST>
+          <ST><![CDATA[Description:= _description;]]></ST>
         </Implementation>
       </Get>
     </Property>

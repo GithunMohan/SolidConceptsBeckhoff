@@ -5,7 +5,10 @@
 VAR_IN_OUT
 	statelist: ARRAY[*] OF IState;
 END_VAR
-]]></Declaration>
+VAR
+	index: INT:=1;
+	message: String;
+END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[]]></ST>
     </Implementation>
