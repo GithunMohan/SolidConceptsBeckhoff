@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <Itf Name="IVisitor" Id="{3c58ef9c-7e84-4c2f-bd79-93b71c257255}">
+    <Declaration><![CDATA[INTERFACE IVisitor
+]]></Declaration>
+    <Property Name="ActualValue" Id="{6ba75df2-8cb7-4218-879b-f0d43aaffe03}">
+      <Declaration><![CDATA[PROPERTY ActualValue : REAL
+]]></Declaration>
+      <Get Name="Get" Id="{8507bf57-0be5-4ac1-a8dc-7bcc936f819b}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Get>
+    </Property>
+    <Method Name="updateValue" Id="{4fd80157-8a5d-43ed-8375-3336bfc32f7b}">
+      <Declaration><![CDATA[METHOD updateValue : REAL
+VAR_INPUT
+	value: REAL;
+END_VAR
+]]></Declaration>
+    </Method>
+  </Itf>
+</TcPlcObject>

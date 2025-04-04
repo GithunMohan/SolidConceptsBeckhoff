@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="StateManager" Id="{cd44a106-8778-4274-94ba-bd71d7d0087f}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK StateManager
+VAR_IN_OUT
+	statelist: ARRAY[*] OF IState;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Method Name="RunProcess" Id="{71358e19-649b-4bb9-8fbc-912ca4112b8e}">
+      <Declaration><![CDATA[METHOD RunProcess : BOOL
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[IF THIS^.statelist[index]<>0 THEN
+	IF THIS^.statelist[index].execute() THEN
+		IF index<= SIZEOF(statelist)-1 THEN		
+			index:=index+1;
+		ELSE
+			index:=1;
+		END_IF
+	END_IF
+	message:= THIS^.statelist[index].Description;
+END_IF]]></ST>
+      </Implementation>
+    </Method>
+  </POU>
+</TcPlcObject>

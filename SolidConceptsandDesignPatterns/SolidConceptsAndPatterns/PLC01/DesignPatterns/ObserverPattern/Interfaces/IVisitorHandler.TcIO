@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <Itf Name="IVisitorHandler" Id="{27e35cdd-c5bf-4c2a-b6d0-6293849fbcc8}">
+    <Declaration><![CDATA[INTERFACE IVisitorHandler
+]]></Declaration>
+    <Method Name="subscribe" Id="{281fe6a7-c3c0-4b3a-b839-73f4c35fd384}">
+      <Declaration><![CDATA[METHOD subscribe : BOOL
+VAR_INPUT
+	subscriber: IVisitor;
+END_VAR
+]]></Declaration>
+    </Method>
+    <Method Name="unSubscribe" Id="{b5d76387-ffa7-42fd-af93-cc339f812700}">
+      <Declaration><![CDATA[METHOD unSubscribe : BOOL
+VAR_INPUT
+	subscriber: IVisitor;
+END_VAR
+]]></Declaration>
+    </Method>
+  </Itf>
+</TcPlcObject>
