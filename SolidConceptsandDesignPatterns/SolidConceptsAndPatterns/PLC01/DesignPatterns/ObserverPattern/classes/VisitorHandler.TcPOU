@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="VisitorHandler" Id="{22367c14-884c-4b8b-873a-e1ee6a70a8d2}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK VisitorHandler IMPLEMENTS IVisitorHandler
+VAR
+	_subscribers: ARRAY[1..Gl1.NUMOFSUBSCRIBERS] OF IVisitor;
+	_ActualTemperature: REAL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Method Name="checkSubscriber" Id="{8e7328ce-34b9-4d6f-9cd1-9e80bbecaeba}">
+      <Declaration><![CDATA[METHOD PRIVATE checkSubscriber : BOOL
+VAR_INPUT
+	subscriber: IVisitor;
+END_VAR
+VAR
+	index: INT;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[RETURN (subscriber =0);
+
+checkSubscriber:= TRUE;
+FOR index:=1 TO Gl1.NUMOFSUBSCRIBERS BY 1 DO
+	IF THIS^._subscribers[index]=subscriber 	THEN
+		RETURN;
+	END_IF
+END_FOR 
+checkSubscriber:= FALSE;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="notify" Id="{e2bec2fe-4390-4de1-8a2b-6d804b5d890b}">
+      <Declaration><![CDATA[METHOD notify : BOOL
+VAR
+	index: INT;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[FOR index :=1 TO Gl1.NUMOFSUBSCRIBERS BY 1 DO 
+	IF THIS^._subscribers[index]<>0 THEN
+		THIS^._subscribers[index].updateValue(THIS^._ActualTemperature);
+	END_IF	
+END_FOR]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="simulateValue" Id="{484b0cc8-d879-4338-93d6-973fba510792}">
+      <Declaration><![CDATA[METHOD simulateValue
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[THIS^._ActualTemperature:= (THIS^._ActualTemperature +0.001) ;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="subscribe" Id="{49c01be8-98df-413a-a008-7756a68fee8d}">
+      <Declaration><![CDATA[METHOD subscribe : BOOL
+VAR_INPUT
+	subscriber: IVisitor;
+END_VAR
+VAR
+	index: INT;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[
+RETURN (subscriber =0 OR checkSubscriber(subscriber));
+
+FOR index :=1 TO Gl1.NUMOFSUBSCRIBERS BY 1 DO 
+	IF THIS^._subscribers[index]=0 THEN
+		THIS^._subscribers[index]:=subscriber;
+		subscribe:= TRUE;
+		RETURN;
+	END_IF
+END_FOR]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="unSubscribe" Id="{27f26ad3-3f23-4952-b4e6-d863b8be56b7}">
+      <Declaration><![CDATA[METHOD unSubscribe : BOOL
+VAR_INPUT
+	subscriber: IVisitor;
+END_VAR
+VAR
+	index: INT;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[RETURN (subscriber =0);
+
+FOR index :=1 TO Gl1.NUMOFSUBSCRIBERS BY 1 DO 
+	IF THIS^._subscribers[index]= subscriber THEN
+		THIS^._subscribers[index]:=0;
+		unSubscribe:=TRUE;
+		RETURN;
+	END_IF
+END_FOR]]></ST>
+      </Implementation>
+    </Method>
+  </POU>
+</TcPlcObject>

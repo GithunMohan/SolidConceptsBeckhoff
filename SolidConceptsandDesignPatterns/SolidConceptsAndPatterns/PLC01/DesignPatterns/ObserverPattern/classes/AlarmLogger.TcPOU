@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="AlarmLogger" Id="{ba3262ee-64d9-4706-8b90-95ee0e106f53}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK AlarmLogger IMPLEMENTS IVisitor
+VAR
+	_value: REAL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Property Name="actualValue" Id="{92d1fb36-0f53-4507-91df-0802767ffdde}">
+      <Declaration><![CDATA[PROPERTY actualValue : REAL
+]]></Declaration>
+      <Get Name="Get" Id="{991cfbcb-80d4-41c7-8de3-ee61721d55a0}">
+        <Declaration><![CDATA[]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[ActualValue:=this^._value;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Method Name="updateValue" Id="{d597d421-924b-4546-8b84-e80b8a4d853a}">
+      <Declaration><![CDATA[METHOD updateValue : REAL
+VAR_INPUT
+	value: REAL;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[this^._value:= value;]]></ST>
+      </Implementation>
+    </Method>
+  </POU>
+</TcPlcObject>

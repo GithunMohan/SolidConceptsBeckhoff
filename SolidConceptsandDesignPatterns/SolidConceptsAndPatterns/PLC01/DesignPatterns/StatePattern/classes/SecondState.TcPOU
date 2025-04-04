@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="SecondState" Id="{efa1cfc3-75fc-4e25-b823-086e67930745}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK SecondState IMPLEMENTS Istate
+VAR
+	stateFinished: BOOL;
+	_description: STRING := 'SecondState';
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Property Name="Description" Id="{01ddd6a0-cf9a-4907-841b-9f69f750c812}">
+      <Declaration><![CDATA[PROPERTY Description : STRING
+]]></Declaration>
+      <Get Name="Get" Id="{557ee3ca-cfc2-47a6-accc-45ec5e733b08}">
+        <Declaration><![CDATA[]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[Description:= _description;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Method Name="execute" Id="{f2be1b42-2461-459e-b05a-b7ec57fc4abe}">
+      <Declaration><![CDATA[METHOD execute : BOOL
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[IF NOT stateFinished THEN 
+	THIS^();
+END_IF
+
+execute:= stateFinished;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="FB_Init" Id="{92c893e4-14bd-4bf3-8232-74d76a49a92a}">
+      <Declaration><![CDATA[///FB_Init is always available implicitly and it is used primarily for initialization.
+///The return value is not evaluated. For a specific influence, you can also declare the
+///methods explicitly and provide additional code there with the standard initialization
+///code. You can evaluate the return value.
+METHOD FB_Init : BOOL
+VAR_INPUT
+	/// TRUE: the retain variables are initialized (reset warm / reset cold)
+	bInitRetains: BOOL;
+	/// TRUE: the instance will be copied to the copy code afterward (online change) 
+	bInCopyCode: BOOL;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[]]></ST>
+      </Implementation>
+    </Method>
+  </POU>
+</TcPlcObject>

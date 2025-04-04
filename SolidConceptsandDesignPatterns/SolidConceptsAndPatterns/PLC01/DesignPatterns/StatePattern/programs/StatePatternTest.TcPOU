@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="StatePatternTest" Id="{ff2a673d-2cd4-48fe-826b-729eb6dd3bee}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM StatePatternTest
+VAR
+	stateManger: StateManager;
+	firststate: FirstState;
+	secondState: SecondState;
+	stateslist: ARRAY[1..2] OF Istate:=[firststate,secondState];
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+stateManger(statelist := stateslist);
+stateManger.RunProcess();]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

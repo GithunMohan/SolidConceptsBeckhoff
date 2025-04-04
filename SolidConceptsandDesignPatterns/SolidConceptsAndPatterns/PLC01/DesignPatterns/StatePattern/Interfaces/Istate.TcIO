@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <Itf Name="Istate" Id="{cf3b1d54-4f51-4e95-8f09-e0bf534e3e62}">
+    <Declaration><![CDATA[INTERFACE Istate
+]]></Declaration>
+    <Property Name="Description" Id="{f59e69a3-df26-4a9a-8375-62c52f4fd08c}">
+      <Declaration><![CDATA[PROPERTY Description : STRING
+]]></Declaration>
+      <Get Name="Get" Id="{c5175e1d-2229-4db5-9bca-cfca76f8cdc2}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Get>
+    </Property>
+    <Method Name="execute" Id="{2b3674e8-71bd-45f9-8d83-3a8fcc14aa13}">
+      <Declaration><![CDATA[METHOD execute : BOOL
+]]></Declaration>
+    </Method>
+  </Itf>
+</TcPlcObject>

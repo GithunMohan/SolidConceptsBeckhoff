@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="ObserverPatternTest" Id="{534f6ce9-3e97-41da-ab91-116f7415a188}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM ObserverPatternTest
+VAR
+	machine: VisitorHandler;
+	AlarmLogger1: AlarmLogger;
+	AlarmLogger2: AlarmLogger;
+	AttachAlarmLogger1: BOOL;
+	AttachAlarmLogger2: BOOL;
+	DetachAlarmLogger1: BOOL;
+	DetachAlarmLogger2: BOOL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[IF AttachAlarmLogger1 THEN
+	AttachAlarmLogger1:= FALSE;
+	machine.subscribe(AlarmLogger1);
+END_IF
+
+
+IF AttachAlarmLogger2 THEN
+	AttachAlarmLogger2:= FALSE;
+	machine.subscribe(AlarmLogger2);
+END_IF
+
+
+IF DetachAlarmLogger1 THEN
+	DetachAlarmLogger1:= FALSE;
+	machine.unSubscribe(AlarmLogger1);
+END_IF
+
+IF DetachAlarmLogger2 THEN
+	DetachAlarmLogger2:= FALSE;
+	machine.unSubscribe(AlarmLogger2);
+END_IF
+
+
+
+Machine.notify();
+Machine.simulateValue();
+]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

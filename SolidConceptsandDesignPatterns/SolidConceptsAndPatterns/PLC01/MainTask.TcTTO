@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <Task Name="MainTask" Id="{00caaeb9-7cdb-49cb-89fe-254ac2257af7}">
+    <!--CycleTime in micro seconds.-->
+    <CycleTime>20000</CycleTime>
+    <Priority>1</Priority>
+    <PouCall>
+      <Name>ObserverPatternTest</Name>
+    </PouCall>
+    <PouCall>
+      <Name>StatePatternTest</Name>
+    </PouCall>
+    <TaskFBGuid>{41ee62c8-47dd-4471-ac74-0515148db9c8}</TaskFBGuid>
+    <Fb_init>{cf5a4a56-80b5-4ab0-8fc2-220456bc6998}</Fb_init>
+    <Fb_exit>{5ee84e26-94d2-4a79-ad3e-3f68988b142a}</Fb_exit>
+    <CycleUpdate>{673d1182-d3fb-4e4b-8e8c-da34c7bb038b}</CycleUpdate>
+    <PostCycleUpdate>{b0191289-dd3e-4423-afbd-2eed0ee977ee}</PostCycleUpdate>
+  </Task>
+</TcPlcObject>
